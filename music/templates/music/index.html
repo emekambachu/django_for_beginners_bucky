@@ -9,11 +9,14 @@
 <body>
 
     <h3>Music</h3>
-{% if all_albums %}
+{% if albums %}
 <ul>
-    {% for album in all_albums %}
-    <li><a href="/music/{{ album.id }}/">{{ album.album_title }}</a></li>
+    {% for album in albums %}
+    <li><a href="{% url 'music:detail' album.id %}">
+        {{ album.album_title }}</a>
+    </li>
     {% endfor %}
+
 </ul>
 {% else %}
     <h5>No albums Available</h5>
