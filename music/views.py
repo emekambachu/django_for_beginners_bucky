@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, Http404
 # from django.template import loader
+
+from django.views import generic
 from .models import Album, Song
 
 # old method using function based views
@@ -41,4 +43,5 @@ from .models import Album, Song
 
 
 # new method using class based views
-
+class IndexView(generic.ListView):
+    template_name = 'music/index.html'
