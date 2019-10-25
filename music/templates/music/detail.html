@@ -1,6 +1,10 @@
 {% extends 'music/base.html' %}
 {% load static %}
 
+{% block title %}
+    {{ album.album_title }}
+{% endblock %}
+
 {% block content %}
 
     {% if album %}
