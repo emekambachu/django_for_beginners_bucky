@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,9 +29,16 @@
     {% for song in album.song_set.all %}
 
         <input type="radio" id="song{{ forloop.counter }}" name="song" value="{{ song.id }}">
-        <label for="song{{ forloop.counter }}">{{ song.song_title }}</label>
+        <label for="song{{ forloop.counter }}">
+            {{ song.song_title }}
+
+            {% if song.is_favorite %}
+                <img src="{% static 'music/img/star.png' %}" width="15"/>
+            {% endif %}
+        </label><br>
 
     {% endfor %}
+    <input type="submit" value="Favorite">
 </form>
 
 </body>
