@@ -17,21 +17,21 @@
         <p><strong>{{ error_message }}</strong></p>
     {% endif %}
 
-    <form action="{% url 'music:favorite' album.id %}" method="post">
-        {% csrf_token %}
-        {% for song in album.song_set.all %}
-
-            <input type="radio" id="song{{ forloop.counter }}" name="song" value="{{ song.id }}">
-            <label for="song{{ forloop.counter }}">
-                {{ song.song_title }}
-
-                {% if song.is_favorite %}
-                    <img src="{% static 'music/img/star.png' %}" width="12"/>
-                {% endif %}
-            </label><br>
-
-        {% endfor %}
-        <input type="submit" value="Favorite">
-    </form>
+{#    <form action="{% url 'music:favorite' album.id %}" method="post">#}
+{#        {% csrf_token %}#}
+{#        {% for song in album.song_set.all %}#}
+{##}
+{#            <input type="radio" id="song{{ forloop.counter }}" name="song" value="{{ song.id }}">#}
+{#            <label for="song{{ forloop.counter }}">#}
+{#                {{ song.song_title }}#}
+{##}
+{#                {% if song.is_favorite %}#}
+{#                    <img src="{% static 'music/img/star.png' %}" width="12"/>#}
+{#                {% endif %}#}
+{#            </label><br>#}
+{##}
+{#        {% endfor %}#}
+{#        <input type="submit" value="Favorite">#}
+{#    </form>#}
 
 {% endblock %}

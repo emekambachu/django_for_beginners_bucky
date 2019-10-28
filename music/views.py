@@ -3,7 +3,8 @@ from django.http import HttpResponse, Http404
 # from django.template import loader
 
 from django.views import generic
-from .models import Album, Song
+from . models import Album, Song
+from django.urls import reverse
 
 # old method using function based views
 # def index(request):
@@ -45,3 +46,19 @@ from .models import Album, Song
 # new method using class based views
 class IndexView(generic.ListView):
     template_name = 'music/index.html'
+    context_object_name = 'albums'
+
+    # use function to get model / database
+    # default name in index page will be album list
+    def get_queryset(self):
+        return Album.objects.all()
+
+
+class DetailView(generic.DeleteView):
+    model = Album
+    template_name = 'music/detail.html'
+
+
+class CreateAlbumView(generic.CreateView):
+    model = Album
+    fields = ['artist', 'album_title', 'genre', 'album_logo']
