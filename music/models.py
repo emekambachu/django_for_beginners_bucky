@@ -7,7 +7,7 @@ class Album(models.Model):
     artist = models.CharField(max_length=100, null=False)
     album_title = models.CharField(max_length=100)
     genre = models.CharField(max_length=100)
-    album_logo = models.CharField(max_length=1000, null=True, blank=True)
+    album_logo = models.FileField(null=True, blank=True)
 
     # for redirecting to detail page with primary key
     def get_absolute_url(self):

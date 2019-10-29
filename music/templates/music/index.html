@@ -11,11 +11,21 @@
     {% if albums %}
     <ul>
         {% for album in albums %}
-        <li><a href="{% url 'music:detail' album.id %}">
-            {{ album.album_title }}</a>
-        </li>
-    {% endfor %}
+            {% if album.album_logo %}
+            <img src="{{ album.album_logo.url }}" class="img-responsive" width="100"/>
+            {% endif %}
+            <li><a href="{% url 'music:detail' album.id %}">
+                {{ album.album_title }}</a>
+            </li>
 
+            <form method="post" action="{% url 'music:delete-album' album.id %}" style="display: inline;">
+                {% csrf_token %}
+                <input type="hidden" name="album_id" value="{{ album.id }}">
+                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+            </form>
+
+            <a href="{% url 'music:update-album' album.id %}"><button class="btn btn-sm btn-warning">Update</button></a>
+        {% endfor %}
     </ul>
     {% else %}
         <h5>No albums Available</h5>

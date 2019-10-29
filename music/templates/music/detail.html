@@ -9,6 +9,11 @@
 
     {% if album %}
         <h3>Details of this album are:</h3>
+{#        {% if album.album_logo %}#}
+{#            <img src="{{ album.album_logo.url }}" class="img-responsive" width="150"/>#}
+{#        {% endif %}#}
+
+        <img src="{{ album.album_logo.url }}" class="img-responsive" width="100"/>
         <p><strong>Artist:</strong> {{ album.artist }}</p>
         <p><strong>Title:</strong> {{ album.album_title }}</p>
     {% endif %}
@@ -16,22 +21,5 @@
     {% if error_message %}
         <p><strong>{{ error_message }}</strong></p>
     {% endif %}
-
-{#    <form action="{% url 'music:favorite' album.id %}" method="post">#}
-{#        {% csrf_token %}#}
-{#        {% for song in album.song_set.all %}#}
-{##}
-{#            <input type="radio" id="song{{ forloop.counter }}" name="song" value="{{ song.id }}">#}
-{#            <label for="song{{ forloop.counter }}">#}
-{#                {{ song.song_title }}#}
-{##}
-{#                {% if song.is_favorite %}#}
-{#                    <img src="{% static 'music/img/star.png' %}" width="12"/>#}
-{#                {% endif %}#}
-{#            </label><br>#}
-{##}
-{#        {% endfor %}#}
-{#        <input type="submit" value="Favorite">#}
-{#    </form>#}
 
 {% endblock %}
