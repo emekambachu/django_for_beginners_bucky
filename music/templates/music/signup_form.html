@@ -1,10 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'music/base.html' %}
+{% load static %}
 
-</body>
-</html>
+{% block title %}
+    Signup page
+{% endblock %}
+
+{% block content %}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 col-sm-8">
+
+                <form class="form-control" action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    {% include 'music/form_template.html' %}
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

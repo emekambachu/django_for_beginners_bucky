@@ -79,7 +79,7 @@ class DeleteAlbumView(generic.DeleteView):
     success_url = reverse_lazy('music:index')
 
 
-class UserFormView(View):
+class SignupView(View):
     form_class = UserForm
     template_name = 'music/signup_form.html'
 
@@ -107,4 +107,6 @@ class UserFormView(View):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    pass
+                    return redirect('music:index')
+
+        return render(request, self.template_name, {'form': form})

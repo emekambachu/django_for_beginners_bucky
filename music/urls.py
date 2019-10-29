@@ -18,6 +18,8 @@ urlpatterns = [
 
     path('delete-album/<int:pk>/', views.DeleteAlbumView.as_view(), name='delete-album'),
 
+    path('register/', views.SignupView.as_view(), name='register'),
+
     # /music/id/favorite/
     # path('<int:album_id>/favorite/', views.favorite, name='favorite'),
 ]
